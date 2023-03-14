@@ -3,11 +3,18 @@ class RecipesController < ApplicationController
 
   # GET /recipes or /recipes.json
   def index
-    @recipes = Recipe.all
+    @recipes = @user.recipes.includes(:recipes_foods).all.order('id DESC')
   end
 
   # GET /recipes/1 or /recipes/1.json
-  def show; end
+  def show
+    @foods = @user.foods
+    @food_items = []
+    @foods.each do |food|
+      @food_items << [food.name, food.id]
+    end
+    @food_items
+  end
 
   # GET /recipes/new
   def new
@@ -19,7 +26,7 @@ class RecipesController < ApplicationController
 
   # POST /recipes or /recipes.json
   def create
-    @recipe = Recipe.new(recipe_params)
+    @recipe = @user.recipes.new(recipe_params)
 
     respond_to do |format|
       if @recipe.save
