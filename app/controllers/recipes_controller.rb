@@ -14,6 +14,7 @@ class RecipesController < ApplicationController
 
   # GET /recipes/new
   def new
+    current_user = @user
     @recipe = Recipe.new
   end
 
