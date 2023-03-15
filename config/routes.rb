@@ -4,8 +4,12 @@ Rails.application.routes.draw do
   # resources :foods
   # resources :inventory_foods
   root "inventories#index"
-  resources :inventories, only: [:new, :create, :edit, :index, :show] do
+  resources :inventories, only: [:new, :create, :edit, :index, :show, :destroy] do
 
+  end
+
+  resources :recipes, only: [:new, :create, :edit, :index, :show, :destroy] do
+  
   end
 
   # resources :users
