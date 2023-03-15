@@ -9,9 +9,9 @@ class Ability
     can :manage, Recipe, user: user
     can :manage, Food, user: user
 
-    #return unless user.is? :admin
+    return unless user.is? :admin
 
-    #can :manage, :all
+    can :manage, :all
     
   end
 end
