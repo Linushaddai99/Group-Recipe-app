@@ -8,12 +8,8 @@ class RecipesController < ApplicationController
 
   # GET /recipes/1 or /recipes/1.json
   def show
-    @foods = @user.foods
-    @food_items = []
-    @foods.each do |food|
-      @food_items << [food.name, food.id]
-    end
-    @food_items
+    @recipe = Recipe.includes([:user]).find(params[:id])
+    @recipe_food = @recipe.recipes_foods.all.includes([:food]).sort_by { |recipe_food| recipe_food.food.name }
   end
 
   # GET /recipes/new
