@@ -22,12 +22,14 @@ class RecipeFoodsController < ApplicationController
   end
 
   # GET /recipe_foods/1/edit
-  def edit; end
+  def edit
+    @recipe_food = RecipeFood.find(params[:id])
+  end
 
   # POST /recipe_foods or /recipe_foods.json
   def create
-    @recipe_food = RecipeFood.new(recipe_food_params)
-
+    @recipe = Recipe.find(params[:recipe_id])
+    @recipe_food = @recipe.recipes_foods.create(quantity: params[:quantity], food_id: params[:food_id])
     respond_to do |format|
       if @recipe_food.save
         format.html { redirect_to recipe_food_url(@recipe_food), notice: 'Recipe food was successfully created.' }
@@ -41,6 +43,7 @@ class RecipeFoodsController < ApplicationController
 
   # PATCH/PUT /recipe_foods/1 or /recipe_foods/1.json
   def update
+    @recipe_food = RecipeFood.find(params[:id])
     respond_to do |format|
       if @recipe_food.update(recipe_food_params)
         format.html { redirect_to recipe_food_url(@recipe_food), notice: 'Recipe food was successfully updated.' }
