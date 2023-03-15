@@ -74,6 +74,7 @@ class RecipeFoodsController < ApplicationController
     @recipe_food = RecipeFood.find(params[:id])
   end
 
+  private
   # Only allow a list of trusted parameters through.
   def recipe_food_params
     params.fetch(:recipe_food, {})
