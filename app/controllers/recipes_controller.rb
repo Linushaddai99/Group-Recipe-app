@@ -74,8 +74,10 @@ class RecipesController < ApplicationController
   end
 
   # Only allow a list of trusted parameters through.
+  private
+  
   def recipe_params
-    params.fetch(:recipe, {})
+    params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public)
   end
 end
 
