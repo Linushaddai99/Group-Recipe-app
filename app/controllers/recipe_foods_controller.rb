@@ -3,14 +3,11 @@ class RecipeFoodsController < ApplicationController
 
   # GET /recipe_foods or /recipe_foods.json
   def index
-    def index
-      @foods = @user.recipes_foods.select(:food_id, 'SUM(quantity) as quantity').group(:food_id, :quantity)
-      @sum = 0
-      @foods.each do |food|
-        @sum += food.quantity * food.food.price
-      end
+    @foods = @user.recipes_foods.select(:food_id, 'SUM(quantity) as quantity').group(:food_id, :quantity)
+    @sum = 0
+    @foods.each do |food|
+      @sum += food.quantity * food.food.price
     end
-  
   end
 
   # GET /recipe_foods/1 or /recipe_foods/1.json
@@ -74,7 +71,6 @@ class RecipeFoodsController < ApplicationController
     @recipe_food = RecipeFood.find(params[:id])
   end
 
-  private
   # Only allow a list of trusted parameters through.
   def recipes_foods_params
     params.require(:recipe_food).permit(:food_id, :quantity, :recipe_id)
