@@ -7,10 +7,10 @@ class Ability
 
     can(:manage, Inventory, user:)
     can(:manage, Recipe, user:)
-    can :manage, Food, user:
+    can(:manage, Food, user:)
 
-    # return unless user.is? :admin
+    return unless user.is? :admin
 
-    # can :manage, :all
+    can :manage, :all
   end
 end
