@@ -12,6 +12,24 @@
   <% end %>
 
   <div>
+    <div class="field">
+      <%= form.label :name %><br />
+      <%= form.text_field :name, autofocus: true, autocomplete: "name" %>
+    </div>
+    <div class="field">
+    <%= form.label :preparation_time %><br />
+    <%= form.text_field :preparation_time, autofocus: true, autocomplete: "name" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cooking_time %><br />
+    <%= form.text_field :cooking_time, autofocus: true, autocomplete: "name" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :public %><br />
+    <%= form.text_field :public, autofocus: true, autocomplete: "name" %>
+  </div>
     <%= form.submit %>
   </div>
 <% end %>

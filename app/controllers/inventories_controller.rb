@@ -1,13 +1,24 @@
 class InventoriesController < ApplicationController
   before_action :set_inventory, only: %i[show edit update destroy]
+  before_action :authenticate_user!
 
   # GET /inventories or /inventories.json
   def index
-    @inventories = Inventory.all
+    # @inventories = Inventory.all
+
+    return unless current_user
+
+    return unless current_user.present?
+
+    @inventories = Inventory.includes([:user]).where(user: current_user).order(created_at: :desc)
   end
 
   # GET /inventories/1 or /inventories/1.json
-  def show; end
+  def show
+    return unless current_user
+
+    @inventory_foods = InventoryFood.includes([:user]).where(user: current_user).order(created_at: :desc)
+  end
 
   # GET /inventories/new
   def new
@@ -64,6 +75,9 @@ class InventoriesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def inventory_params
-    params.fetch(:inventory, {})
+    #  params.fetch(:inventory, {name})
+    params.require(:inventory).permit(:name).merge(user: current_user)
   end
 end
+
+# params.require(:inventory).permit(:name, :description).merge(user: current_user)
