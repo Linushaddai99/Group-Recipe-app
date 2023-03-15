@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
+  devise_for :users
   # resources :recipes
   # resources :recipe_foods
   # resources :foods
   # resources :inventory_foods
-  root "inventories#index"
+  root "users#index"
   # Routes for public recepes
   get '/public_recipes', to: 'public_recipes#index'
   # Routes for shopping list
