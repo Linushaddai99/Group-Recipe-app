@@ -3,7 +3,7 @@ class RecipesController < ApplicationController
 
   # GET /recipes or /recipes.json
   def index
-    @recipes = @user.recipes.includes(:recipes_foods).all.order('id DESC')
+    @recipes = current_user.recipes.includes(:recipes_foods).all.order('id DESC')
   end
 
   # GET /recipes/1 or /recipes/1.json
@@ -22,8 +22,7 @@ class RecipesController < ApplicationController
 
   # POST /recipes or /recipes.json
   def create
-    @recipe = @user.recipes.new(recipe_params)
-
+    @recipe = current_user.recipes.new(recipe_params)
     respond_to do |format|
       if @recipe.save
         format.html { redirect_to recipe_url(@recipe), notice: 'Recipe was successfully created.' }
