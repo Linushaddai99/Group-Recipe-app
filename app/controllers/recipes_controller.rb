@@ -3,18 +3,18 @@ class RecipesController < ApplicationController
 
   # GET /recipes or /recipes.json
   def index
-    # @recipes = Recipe.all
-
-    return unless current_user
-
-    @recipes = Recipe.includes([:user]).where(user: current_user).order(created_at: :desc)
+    @recipes = current_user.recipes.includes(:recipes_foods).all.order('id DESC')
   end
 
   # GET /recipes/1 or /recipes/1.json
-  def show; end
+  def show
+    @recipe = Recipe.includes([:user]).find(params[:id])
+    @recipe_food = @recipe.recipes_foods.all.includes([:food]).sort_by { |recipe_food| recipe_food.food.name }
+  end
 
   # GET /recipes/new
   def new
+    current_user = @user
     @recipe = Recipe.new
   end
 
@@ -23,8 +23,7 @@ class RecipesController < ApplicationController
 
   # POST /recipes or /recipes.json
   def create
-    @recipe = Recipe.new(recipe_params)
-
+    @recipe = current_user.recipes.new(recipe_params)
     respond_to do |format|
       if @recipe.save
         format.html { redirect_to recipe_url(@recipe), notice: 'Recipe was successfully created.' }
@@ -33,6 +32,13 @@ class RecipesController < ApplicationController
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @recipe.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def public
+    @public_recipes = Recipe.includes([:user], [:recipes_foods]).where(public: true).order(created_at: :desc)
+    @public_recipes.each do |recipe|
+      recipe.recipes_foods.all.includes([:food]).sort_by { |recipe_food| recipe_food.food.name }
     end
   end
 
@@ -51,6 +57,7 @@ class RecipesController < ApplicationController
 
   # DELETE /recipes/1 or /recipes/1.json
   def destroy
+    @recipe = Recipe.find(params[:id])
     @recipe.destroy
 
     respond_to do |format|
@@ -68,7 +75,7 @@ class RecipesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def recipe_params
-    #  params.fetch(:recipe, {})
-    params.require(:recipe).permit(:name).merge(user: current_user)
+    params.fetch(:recipe, {})
   end
 end
+
