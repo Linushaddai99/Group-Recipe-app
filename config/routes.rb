@@ -4,6 +4,13 @@ Rails.application.routes.draw do
   # resources :foods
   # resources :inventory_foods
   root "inventories#index"
+  # Routes for public recepes
+  get '/public_recipes', to: 'public_recipes#index'
+  # Routes for shopping list
+  get '/shopping_list', to: 'shopping_lists#index'
+
+
+  #get "", to:"users#index", as: 'users'
 
   # Routes for Inventory
   resources :inventories, only: [:new, :create, :edit, :index, :show, :destroy] do
@@ -15,11 +22,7 @@ Rails.application.routes.draw do
   
   end
   
-  # Routes for public recepes
-  gets '/public_recipes', to: 'public_recipes#index'
 
-  # Routes for shopping list
-  gets '/shopping_list', to: 'shopping_lists#index'
   
   # Routes for Is
   # resources :users
