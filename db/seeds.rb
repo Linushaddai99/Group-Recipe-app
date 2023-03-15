@@ -1,4 +1,5 @@
 first_user = User.create(name:"Shaddai", email: 'shaddai@gmail.com', password: '12345678')
+second_user = User.create(name:"Mert", email: 'mert@gmail.com', password: '12345678')
 
 first_inventory = Inventory.create(name:"First Inventory", user:first_user)
 second_inventory = Inventory.create(name:"Second Inventory", user:first_user)

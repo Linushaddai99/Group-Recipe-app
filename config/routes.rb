@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # resources :recipe_foods
   # resources :foods
   # resources :inventory_foods
-  root "users#index"
+  root "inventories#index"
   # Routes for public recepes
   get '/public_recipes', to: 'public_recipes#index'
   # Routes for shopping list
