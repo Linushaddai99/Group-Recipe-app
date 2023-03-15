@@ -7,10 +7,10 @@ class InventoriesController < ApplicationController
     # @inventories = Inventory.all
 
     return unless current_user
-    if current_user.present?
-      @inventories = Inventory.includes([:user]).where(user: current_user).order(created_at: :desc)
-    end
 
+    return unless current_user.present?
+
+    @inventories = Inventory.includes([:user]).where(user: current_user).order(created_at: :desc)
   end
 
   # GET /inventories/1 or /inventories/1.json
