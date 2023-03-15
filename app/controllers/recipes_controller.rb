@@ -3,7 +3,11 @@ class RecipesController < ApplicationController
 
   # GET /recipes or /recipes.json
   def index
-    @recipes = Recipe.all
+    # @recipes = Recipe.all
+
+    return unless current_user
+
+    @recipes = Recipe.includes([:user]).where(user: current_user).order(created_at: :desc)
   end
 
   # GET /recipes/1 or /recipes/1.json
@@ -64,6 +68,7 @@ class RecipesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def recipe_params
-    params.fetch(:recipe, {})
+    #  params.fetch(:recipe, {})
+    params.require(:recipe).permit(:name).merge(user: current_user)
   end
 end

@@ -5,13 +5,12 @@ class Ability
     # Define abilities for the user here. For example:
     return unless user.present?
 
-    can :manage, Inventory, user: user
-    can :manage, Recipe, user: user
-    can :manage, Food, user: user
+    can(:manage, Inventory, user:)
+    can(:manage, Recipe, user:)
+    can :manage, Food, user:
 
-    #return unless user.is? :admin
+    # return unless user.is? :admin
 
-    #can :manage, :all
-    
+    # can :manage, :all
   end
 end

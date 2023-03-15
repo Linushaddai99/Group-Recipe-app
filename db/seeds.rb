@@ -1,15 +1,21 @@
 first_user = User.create(name:"Shaddai", email: 'shaddai@gmail.com', password: '12345678')
 second_user = User.create(name:"Mert", email: 'mert@gmail.com', password: '12345678')
 
+puts 'adds user data'
+
 first_inventory = Inventory.create(name:"First Inventory", user:first_user)
 second_inventory = Inventory.create(name:"Second Inventory", user:first_user)
 third_inventory = Inventory.create(name:"Third Inventory", user:first_user)
 fourth_inventory = Inventory.create(name:"Fourth Inventory", user:first_user)
 
+puts 'adds inventory data on first_user'
+
 first_food = Food.create(name: "Apple", measurement_unit:"g", price:5)
 second_food = Food.create(name: "Rice", measurement_unit:"g", price:10)
 third_food = Food.create(name: "Oat", measurement_unit:"g", price:25)
 fourth_food = Food.create(name: "Beans", measurement_unit:"g", price:35)
+
+puts 'adds food data'
 
 InventoryFood.create(quantity: 5, inventory: first_inventory, food: first_food)
 InventoryFood.create(quantity: 10, inventory: first_inventory, food: second_food)
@@ -27,10 +33,14 @@ InventoryFood.create(quantity: 7, inventory: third_inventory, food: second_food)
 InventoryFood.create(quantity: 10, inventory: fourth_inventory, food: third_food)
 InventoryFood.create(quantity: 5, inventory: fourth_inventory, food: fourth_food)
 
+puts 'adds intentory food data on inventories'
+
 first_recipe = Recipe.create(name: "First Recipe", preparation_time:10, cooking_time:20, description: "First thing to do", public:true, user:first_user)
 second_recipe = Recipe.create(name: "Second Recipe", preparation_time:20, cooking_time:50, description: "This is how make this dish", public:false, user:first_user)
 third_recipe = Recipe.create(name: "Third Recipe", preparation_time:30, cooking_time:10, description: "First thing to do", public:true, user:first_user)
 fourth_recipe = Recipe.create(name: "fourth Recipe", preparation_time:5, cooking_time:20, description: "First thing to do", public:false, user:first_user)
+
+puts 'adds recipes on the inventories'
 
 RecipeFood.create(quantity:10, recipe:first_recipe, food:first_food)
 RecipeFood.create(quantity:30, recipe:first_recipe, food:second_food)
@@ -51,3 +61,5 @@ RecipeFood.create(quantity:10, recipe:fourth_recipe, food:first_food)
 RecipeFood.create(quantity:38, recipe:fourth_recipe, food:second_food)
 RecipeFood.create(quantity:76, recipe:fourth_recipe, food:third_food)
 RecipeFood.create(quantity:99, recipe:fourth_recipe, food:fourth_food)
+
+puts 'adds recipe data'

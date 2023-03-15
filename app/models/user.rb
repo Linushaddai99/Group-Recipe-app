@@ -10,8 +10,7 @@ class User < ApplicationRecord
 
   validates :name, presence: true
 
-  #def is?(requested_role)
+  # def is?(requested_role)
   #  role == requested_role.to_s
-  #end
-
+  # end
 end
