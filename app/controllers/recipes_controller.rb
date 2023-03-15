@@ -39,6 +39,13 @@ class RecipesController < ApplicationController
     end
   end
 
+  def public
+    @public_recipes = Recipe.includes([:user], [:recipes_foods]).where(public: true).order(created_at: :desc)
+    @public_recipes.each do |recipe|
+      recipe.recipes_foods.all.includes([:food]).sort_by { |recipe_food| recipe_food.food.name }
+    end
+  end
+
   # PATCH/PUT /recipes/1 or /recipes/1.json
   def update
     respond_to do |format|

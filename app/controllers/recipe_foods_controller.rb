@@ -3,7 +3,14 @@ class RecipeFoodsController < ApplicationController
 
   # GET /recipe_foods or /recipe_foods.json
   def index
-    @recipe_foods = RecipeFood.all
+    def index
+      @foods = @user.recipes_foods.select(:food_id, 'SUM(quantity) as quantity').group(:food_id, :quantity)
+      @sum = 0
+      @foods.each do |food|
+        @sum += food.quantity * food.food.price
+      end
+    end
+  
   end
 
   # GET /recipe_foods/1 or /recipe_foods/1.json
