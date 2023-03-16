@@ -32,7 +32,9 @@ Rails.application.routes.draw do
   
   resources :shopping_list, only: [:index]
 
-  resources :users
+  resources :users do 
+    resources :foods, only: [:new, :create, :edit, :update, :destroy]
+  end
 
 
 #  resources :recipe_foods, only: [:edit, :update, :destroy]
