@@ -3,7 +3,7 @@
     <div class="card-body space-between">
       <div>
         <h3>
-          <%= link_to recipe.name, user_recipe_path(id: recipe.id, user_id: recipe.user.id), class: "card-title" %>
+          <%= link_to recipe.name, recipe_path(recipe.id, user_id: recipe.user.id), class: "card-title" %>
         </h3>
         <h5>By: <%= recipe.user.name %>
         </h5>
@@ -14,9 +14,9 @@
         <% else %>
         <span class="badge text-bg-secondary p-2 px-4">Private</span>
         <% end %>
-        <h5 class="mt-3">Total foods: <%= recipe.recipes_foods.length %> </h5>
+        <h5 class="mt-3">Total foods: <%= recipe.recipe_foods.length %> </h5>
         <% sum = 0 %>
-        <h5>Total price : $ <% recipe.recipes_foods.each do |food| %>
+        <h5>Total price : $ <% recipe.recipe_foods.each do |food| %>
         <% sum += food.food.price %>
         <% end %>
         <%= sum %></h5>
