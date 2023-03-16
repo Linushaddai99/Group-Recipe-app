@@ -31,9 +31,11 @@ Rails.application.routes.draw do
   end
   
   resources :shopping_list, only: [:index]
+  resources :foods, only: [:new, :create, :edit, :update, :destroy]
 
-  resources :users do 
-    resources :foods, only: [:new, :create, :edit, :update, :destroy]
+  resources :users do
+    resources :recipes, only: [:index, :show, :new, :create, :edit, :update, :destroy] 
+    resources :recipes, only: [:index, :show, :new, :create, :edit, :update, :destroy] 
   end
 
 
