@@ -25,32 +25,31 @@ InventoryFood.create(quantity: 5, inventory_id: second_inventory.id, food_id: fo
 
 InventoryFood.create(quantity: 5, inventory_id: third_inventory.id, food_id: first_food.id)
 InventoryFood.create(quantity: 7, inventory_id: third_inventory.id, food_id: second_food)
-
 InventoryFood.create(quantity: 10, inventory_id: fourth_inventory.id, food_id: third_food.id)
 InventoryFood.create(quantity: 5, inventory_id: fourth_inventory.id, food_id: fourth_food.id)
 
 first_recipe = Recipe.create(name: "First Recipe", preparation_time:10, cooking_time:20, description: "First thing to do", public:true, user_id:first_user.id)
-second_recipe = Recipe.create(name: "Second Recipe", preparation_time:20, cooking_time:50, description: "This is how make this dish", public:false, user:first_user.id)
+second_recipe = Recipe.create(name: "Second Recipe", preparation_time:20, cooking_time:50, description: "This is how make this dish", public:false, user_id:first_user.id)
 third_recipe = Recipe.create(name: "Third Recipe", preparation_time:30, cooking_time:10, description: "First thing to do", public:true, user_id:first_user.id)
 fourth_recipe = Recipe.create(name: "fourth Recipe", preparation_time:5, cooking_time:20, description: "First thing to do", public:false, user_id:first_user.id)
 
 RecipeFood.create(quantity:10, recipe_id:first_recipe.id, food_id:first_food.id)
 RecipeFood.create(quantity:30, recipe_id:first_recipe.id, food_id:second_food.id)
 RecipeFood.create(quantity:20, recipe_id:first_recipe.id, food_id:third_food.id)
-RecipeFood.create(quantity:60, recipe_id:first_recipe.id, food_id:fourth_food.id)
+RecipeFood.create(quantity:60, recipe_id:first_recipe.id, food_id:first_food.id)
 
 RecipeFood.create(quantity:80, recipe_id:second_recipe.id, food_id:first_food.id)
 RecipeFood.create(quantity:10, recipe_id:second_recipe.id, food_id:second_food).id
 RecipeFood.create(quantity:30, recipe_id:second_recipe.id, food_id:third_food.id)
-RecipeFood.create(quantity:10, recipe_id:second_recipe.id, food_id:fourth_food.id)
+RecipeFood.create(quantity:10, recipe_id:second_recipe.id, food_id:first_food.id)
 
 RecipeFood.create(quantity:5, recipe_id:third_recipe.id, food_id:first_food.id)
 RecipeFood.create(quantity:16, recipe_id:third_recipe.id, food_id:second_food.id)
 RecipeFood.create(quantity:29, recipe_id:third_recipe.id, food_id:third_food.id)
-RecipeFood.create(quantity:10, recipe_id:third_recipe.id, food_id:fourth_food.id)
+RecipeFood.create(quantity:10, recipe_id:third_recipe.id, food_id:first_food.id)
 
 RecipeFood.create(quantity:10, recipe_id:fourth_recipe.id, food_id:first_food.id)
 RecipeFood.create(quantity:38, recipe_id:fourth_recipe.id, food_id:second_food.id)
 RecipeFood.create(quantity:76, recipe_id:fourth_recipe.id, food_id:third_food.id)
-RecipeFood.create(quantity:99, recipe_id:fourth_recipe.id, food_id:fourth_food.id)
+RecipeFood.create(quantity:99, recipe_id:fourth_recipe.id, food_id:first_food.id)
 
