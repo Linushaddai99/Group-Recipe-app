@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   
   end
   
-
+  resources :shopping_list, only: [:index]
   
   # Routes for Is
   # resources :users

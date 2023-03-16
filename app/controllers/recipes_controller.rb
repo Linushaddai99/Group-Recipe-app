@@ -3,13 +3,13 @@ class RecipesController < ApplicationController
 
   # GET /recipes or /recipes.json
   def index
-    @recipes = current_user.recipes.includes(:recipes_foods).all.order('id DESC')
+    @recipes = current_user.recipes.includes(:recipe_foods).all.order('id DESC')
   end
 
   # GET /recipes/1 or /recipes/1.json
   def show
     @recipe = Recipe.includes([:user]).find(params[:id])
-    @recipe_food = @recipe.recipes_foods.all.includes([:food]).sort_by { |recipe_food| recipe_food.food.name }
+    @recipe_food = @recipe.recipe_foods.all.includes([:food]).sort_by { |recipe_food| recipe_food.food.name }
   end
 
   # GET /recipes/new
