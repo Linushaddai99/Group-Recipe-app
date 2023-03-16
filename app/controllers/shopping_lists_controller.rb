@@ -1,11 +1,9 @@
 class ShoppingListsController < ApplicationController
   def index
-    @recipe = Recipe.find(params[:recipe_id])
-    @recipe_food = @recipe.recipes_foods.all.includes([:food]).sort_by { |recipe_food| recipe_food.food.name }
-    @food = Food.includes([:food])
-    @total_price = 0
-    @recipe_food.each do |fd|
-      @total_price += fd.quantity * fd.food.price
+    @foods = current_user.recipe_foods.select(:food_id, 'SUM(quantity) as quantity').group(:food_id, :quantity)
+    @sum = 0
+    @foods.each do |food|
+      @sum += food.quantity * food.food.price
     end
   end
 end
