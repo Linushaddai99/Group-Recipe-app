@@ -5,24 +5,23 @@
 
   
   <% if @foods %>
-    <%= form_with(model: @inventory_food, url: inventory_inventory_foods_path(@inventory.id), method: :post) do |f| %>
+    <%= form_with(model: @inventory_food, url: inventory_inventory_foods_path(@inventory.id), method: :post) do |form| %>
       <div class="add-inventory-food">
         <p>Add food</p>
         <div>
-          <%= f.select :food_id, @foods.map { |food| [food.name, food.id] }, class: 'select-field' %>
+          <%= form.select :food_id, @foods.map { |food| [food.name, food.id] }, class: 'select-field' %>
         </div>
 
         <div class="field flex">
-          <%= f.label :quantity %><br />
-          <%= f.number_field :quantity, autofocus: true, autocomplete: "quantity" %>
+          <%= form.label :quantity %><br />
+          <%= form.number_field :quantity, autofocus: true, autocomplete: "quantity" %>
         </div>
-
-        <%= f.submit %>
+        <%= form.submit %>
         </div>
       <% end %>
     <% end %>
 
-  <% if @meals %>
+    <% if @meals %>
     <div class="inventory-food-table">
         <table>
         <tr>
@@ -35,12 +34,13 @@
         <% f = @foods.find { |f| f.id == food.food_id } %>
           <td><%= f.name %></td>
           <td><%= food.quantity %></td>
-          <td><%= button_to "Destroy this inventory food", @inventory_food, method: :delete %></td>
+          <td><%= button_to "Destroy this inventory food", inventory_inventory_food_path(food.inventory_id, food.id), method: :delete %></td>
         </tr>
         <% end %>
       </table>
     </div>
-  <% end %>
+<% end %>
+
 
   <%= link_to "Back to inventories", inventories_path %>
 </div>

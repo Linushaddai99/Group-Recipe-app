@@ -58,12 +58,10 @@ class InventoryFoodsController < ApplicationController
 
   # DELETE /inventory_foods/1 or /inventory_foods/1.json
   def destroy
+    @inventory_food = Inventory.find(params[:inventory_id]).inventory_foods.find_by(id: params[:id])
     @inventory_food.destroy
 
-    respond_to do |format|
-      format.html { redirect_to inventory_foods_url, notice: 'Inventory food was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to inventory_path(params[:inventory_id])
   end
 
   private
