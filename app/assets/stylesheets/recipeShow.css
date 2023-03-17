@@ -1,0 +1,104 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.recipe-details-container {
+  width: 60%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 10rem;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+}
+
+.recipe-times {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+form button {
+  width: 100%;
+  padding: 0.25rem 0.75rem 0.25rem 0.75rem;
+  background-color: #20b2aa;
+  color: white;
+}
+
+.edit-this-recipe a {
+  text-decoration: none;
+  padding: 0.35rem 1.1rem 0.35rem 1.1rem;
+  border-radius: 5px;
+  border: solid black 1px;
+  color: white;
+  background-color: blue;
+}
+
+.back-to-recipes-page a {
+  text-decoration: none;
+  padding: 0.35rem 1.1rem 0.35rem 1.1rem;
+  border-radius: 5px;
+  border: solid black 1px;
+  color: white;
+  background-color: black;
+}
+
+.function-buttons {
+  width: 60%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+}
+
+.function-buttons button {
+  width: 30%;
+  padding: 0.25rem 0.75rem 0.25rem 0.75rem;
+  border-radius: 5px;
+}
+
+.generate-shopping-list {
+  background-color: darkslateblue;
+}
+
+.add-ingredient {
+  background-color: #6495ed;
+}
+
+.function-buttons button a {
+  text-decoration: none;
+  color: white;
+}
+
+.preparation-time,
+.cooking-time {
+  display: flex;
+  height: 100%;
+  flex-direction: row;
+  align-content: center;
+  text-align: center;
+  align-items: center;
+  font-size: 1.5rem;
+  gap: 1.3rem;
+}
+
+.preparation-time h3,
+.cooking-time h3 {
+  padding-top: 6px;
+}
+
+.back-to-recipes-page {
+  width: 100%;
+}
+
+.show-actions {
+  width: 1rem;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  padding-left: 0.8rem;
+}

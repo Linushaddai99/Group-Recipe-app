@@ -7,6 +7,7 @@ class Ability
 
     can(:manage, Inventory, user:)
     can(:manage, Recipe, user:)
+    can(:manage, RecipeFood, user:)
     can(:manage, Food, user:)
 
     return unless user.is? :admin

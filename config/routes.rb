@@ -4,12 +4,15 @@ Rails.application.routes.draw do
   # resources :recipe_foods
   # resources :foods
   # resources :inventory_foods
+
   root "inventories#index"
   # Routes for public recepes
   get '/public_recipes', to: 'public_recipes#index'
   # Routes for shopping list
   get '/shopping_list', to: 'shopping_lists#index'
 
+  put '/recipes/:id/toggle_privacy', to: 'recipes#toggle_privacy', as: 'toggle_recipe_privacy'
+  
 
   #get "", to:"users#index", as: 'users'
 
@@ -20,10 +23,20 @@ Rails.application.routes.draw do
 
   resources :foods, only: [:new, :create, :destroy]
 
-  # Routes for Recipes
-  resources :recipes, only: [:new, :create, :edit, :index, :show, :destroy]
-  
+  #resources :recipes, only: [:new, :create, :edit, :index, :show, :destroy] do
+    
+  #end
+
+  resources :recipes, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
+    resources :recipe_foods, only: [:new, :create, :edit, :update, :destroy]
+  end
+
   resources :shopping_list, only: [:index]
+
+  resources :users
+
+
+#  resources :recipe_foods, only: [:edit, :update, :destroy]
   
   # Routes for Is
   # resources :users

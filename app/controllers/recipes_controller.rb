@@ -1,5 +1,6 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe, only: %i[show edit update destroy]
+  before_action :set_recipe, only: %i[edit update destroy]
+  before_action :authenticate_user!
 
   # GET /recipes or /recipes.json
   def index
@@ -8,8 +9,12 @@ class RecipesController < ApplicationController
 
   # GET /recipes/1 or /recipes/1.json
   def show
-    @recipe = Recipe.includes([:user]).find(params[:id])
-    @recipe_food = @recipe.recipe_foods.all.includes([:food]).sort_by { |recipe_food| recipe_food.food.name }
+    @recipe = Recipe.find(params[:id])
+    # @foods = RecipeFood.where(recipe_id: @recipe.id)
+    @recipe_foods = @recipe.recipe_foods
+
+    @foods = RecipeFood.joins(:food).select('foods.id as food_id,
+    name as food_name, quantity, price, quantity * price as value, recipe_id').where(recipe_id: params[:id])
   end
 
   # GET /recipes/new
@@ -22,14 +27,16 @@ class RecipesController < ApplicationController
 
   # POST /recipes or /recipes.json
   def create
-    @recipe = current_user.recipes.new(recipe_params)
+    @recipe = Recipe.new(recipe_params)
+    @recipe.user = current_user
+
     respond_to do |format|
       if @recipe.save
-        format.html { redirect_to recipe_url(@recipe), notice: 'Recipe was successfully created.' }
+        format.html { redirect_to recipes_url, notice: 'Recipe was successfully created.' }
         format.json { render :show, status: :created, location: @recipe }
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @recipe.errors, status: :unprocessable_entity }
+        flash[:error] = 'Error: recipe could not be saved'
+        redirect_to new_recipe_url
       end
     end
   end
@@ -51,11 +58,17 @@ class RecipesController < ApplicationController
   def destroy
     @recipe = Recipe.find(params[:id])
     @recipe.destroy
-
+    #  redirect_to recipes_path, notice: 'Recipe was successfully Deleted.'
     respond_to do |format|
       format.html { redirect_to recipes_url, notice: 'Recipe was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def toggle_privacy
+    @recipe = Recipe.find(params[:id])
+    @recipe.toggle_privacy!
+    redirect_to recipe_path(@recipe)
   end
 
   private
@@ -68,6 +81,6 @@ class RecipesController < ApplicationController
   # Only allow a list of trusted parameters through.
 
   def recipe_params
-    params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public)
+    params.require(:recipe).permit(:name, :description, :preparation_time, :cooking_time, :public)
   end
 end
