@@ -10,14 +10,18 @@ class InventoriesController < ApplicationController
 
     return unless current_user.present?
 
-    @inventories = Inventory.includes([:user]).where(user: current_user).order(created_at: :desc)
+    # @inventories = Inventory.includes([:user]).where(user: current_user).order(created_at: :desc)
+    @inventories = Inventory.includes([:user]).where(user: current_user).all
+
+    # @inventories = Inventory.includes(:user).find(params[:user_id])
+    # @posts = Post.where(author_id: params[:user_id])
   end
 
   # GET /inventories/1 or /inventories/1.json
   def show
     return unless current_user
-
-    @inventory_foods = InventoryFood.includes([:user]).where(user: current_user).order(created_at: :desc)
+    @foods = Food.all
+    @meals = InventoryFood.where(inventory_id: params[:id])
   end
 
   # GET /inventories/new
@@ -76,7 +80,7 @@ class InventoriesController < ApplicationController
   # Only allow a list of trusted parameters through.
   def inventory_params
     #  params.fetch(:inventory, {name})
-    params.require(:inventory).permit(:name).merge(user: current_user)
+    params.require(:inventory).permit(:name, :description).merge(user: current_user)
   end
 end
 
