@@ -1,5 +1,5 @@
 class InventoryFoodsController < ApplicationController
-  before_action :set_inventory_food, only: %i[show edit update destroy]
+  # before_action :set_inventory_food, only: %i[show edit update destroy]
 
   # GET /inventory_foods or /inventory_foods.json
   def index
@@ -19,19 +19,26 @@ class InventoryFoodsController < ApplicationController
 
   # POST /inventory_foods or /inventory_foods.json
   def create
-    @inventory_food = InventoryFood.new(inventory_food_params)
-
-    respond_to do |format|
-      if @inventory_food.save
-        format.html do
-          redirect_to inventory_food_url(@inventory_food), notice: 'Inventory food was successfully created.'
-        end
-        format.json { render :show, status: :created, location: @inventory_food }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @inventory_food.errors, status: :unprocessable_entity }
-      end
+    @inventory_food = InventoryFood.new(food_id: params[:food_id], quantity: params[:quantity])
+    @inventory_food.inventory_id = params[:inventory_id]
+    @inventory_food.save
+    if @inventory_food.save
+      redirect_to inventory_path(params[:inventory_id]), notice: 'Food was successfully added.'
+    else
+      render :new, alert: 'Food was not created.'
     end
+
+    # respond_to do |format|
+    #   if @inventory_food.save
+    #     format.html do
+    #       redirect_to inventory_food_url(@inventory_food), notice: 'Inventory food was successfully created.'
+    #     end
+    #     format.json { render :show, status: :created, location: @inventory_food }
+    #   else
+    #     format.html { render :new, status: :unprocessable_entity }
+    #     format.json { render json: @inventory_food.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /inventory_foods/1 or /inventory_foods/1.json
@@ -51,20 +58,18 @@ class InventoryFoodsController < ApplicationController
 
   # DELETE /inventory_foods/1 or /inventory_foods/1.json
   def destroy
+    @inventory_food = Inventory.find(params[:inventory_id]).inventory_foods.find_by(id: params[:id])
     @inventory_food.destroy
 
-    respond_to do |format|
-      format.html { redirect_to inventory_foods_url, notice: 'Inventory food was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to inventory_path(params[:inventory_id])
   end
 
   private
 
   # Use callbacks to share common setup or constraints between actions.
-  def set_inventory_food
-    @inventory_food = InventoryFood.find(params[:id])
-  end
+  # def set_inventory_food
+  #   @inventory_food = InventoryFood.find(params[:id])
+  # end
 
   # Only allow a list of trusted parameters through.
   # def inventory_food_params
@@ -72,6 +77,6 @@ class InventoryFoodsController < ApplicationController
   # end
 
   def inventory_food_params
-    params.require(:@inventory_food).permit(:quantity, :food_id, :inventory_id)
+    params.require(:inventory_food).permit(food_id: params[:food_id], quantity: params[:quantity])
   end
 end

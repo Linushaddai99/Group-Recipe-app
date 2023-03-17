@@ -43,6 +43,8 @@ class RecipesController < ApplicationController
 
   # PATCH/PUT /recipes/1 or /recipes/1.json
   def update
+    @recipe_food = Recipe.find(params[:recipe_id]).recipe_foods.find_by(id: params[:id])
+
     respond_to do |format|
       if @recipe.update(recipe_params)
         format.html { redirect_to recipe_url(@recipe), notice: 'Recipe was successfully updated.' }

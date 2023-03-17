@@ -18,19 +18,17 @@ Rails.application.routes.draw do
 
   # Routes for Inventory
   resources :inventories, only: [:new, :create, :edit, :index, :show, :destroy] do
-
+    resources :inventory_foods, only: [:new, :create, :destroy]
   end
 
-  # Routes for Recipes
+  resources :foods, only: [:new, :create, :destroy]
+
   #resources :recipes, only: [:new, :create, :edit, :index, :show, :destroy] do
     
   #end
 
   resources :recipes, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
     resources :recipe_foods, only: [:new, :create, :edit, :update, :destroy]
-  end
-  resources :inventories, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
-    resources :inventory_foods, only: [:new, :create, :edit, :update, :destroy]
   end
   
   resources :shopping_list, only: [:index]
