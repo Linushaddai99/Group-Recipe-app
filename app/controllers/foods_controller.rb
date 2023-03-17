@@ -7,10 +7,6 @@ class FoodsController < ApplicationController
     @foods = Food.where(user_id: @user.id)
   end
 
-  # GET /foods/1 or /foods/1.json
-
-
-  # GET /foods/new
   def new
     @user = current_user
     @food = Food.new
