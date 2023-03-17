@@ -6,4 +6,3 @@ class Recipe < ApplicationRecord
     update(public: !public)
   end
 end
-
