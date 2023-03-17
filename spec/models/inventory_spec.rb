@@ -18,12 +18,10 @@ RSpec.describe Inventory, type: :model do
   end
 
   it 'name should be implemented' do
-    expect(subject.name).to eql "My First Inventory"
+    expect(subject.name).to eql 'My First Inventory'
   end
 
   it 'user should be implemenged' do
     expect(subject.user_id).to eql 1
   end
-
-
 end
