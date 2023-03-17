@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-  <div>
+  <div class="form-input-fields">
     <div class="field">
       <%= form.label :name %><br />
       <%= form.text_field :name, autofocus: true %>
@@ -26,15 +26,16 @@
     <%= form.text_field :preparation_time, autofocus: true %>
   </div>
 
-  <div class="field">
-    <%= form.label :cooking_time %><br />
-    <%= form.text_field :cooking_time, autofocus: true%>
-  </div>
+    <div class="field">
+      <%= form.label :cooking_time %><br />
+      <%= form.text_field :cooking_time, autofocus: true%>
+    </div>
 
-  <div class="checkbox-div">
-    <%= form.label :public, style: "display: block" %>
-    <%= form.check_box :public %>
-  </div>
+    <div class="checkbox-div">
+      <%= form.label :public %>
+      <%= form.check_box :public %>
+    </div>
+
     <%= form.submit %>
   </div>
 <% end %>
