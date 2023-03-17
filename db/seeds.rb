@@ -1,10 +1,10 @@
 first_user = User.create(name:"Shaddai", email: 'shaddai@gmail.com', password: '12345678')
 second_user = User.create(name:"Mert", email: 'mert@gmail.com', password: '12345678')
 
-first_inventory = Inventory.create(name:"First Inventory", user_id:first_user.id)
-second_inventory = Inventory.create(name:"Second Inventory", user_id:first_user.id)
-third_inventory = Inventory.create(name:"Third Inventory", user_id:first_user.id)
-fourth_inventory = Inventory.create(name:"Fourth Inventory", user_id:second_user.id)
+first_inventory = Inventory.create(name:"First Inventory", user: first_user)
+second_inventory = Inventory.create(name:"Second Inventory", user: first_user)
+third_inventory = Inventory.create(name:"Third Inventory", user: first_user)
+fourth_inventory = Inventory.create(name:"Fourth Inventory", user: second_user)
 
 puts 'adds inventory data on first_user'
 
@@ -29,10 +29,10 @@ InventoryFood.create(quantity: 7, inventory_id: third_inventory.id, food_id: sec
 InventoryFood.create(quantity: 10, inventory_id: fourth_inventory.id, food_id: third_food.id)
 InventoryFood.create(quantity: 5, inventory_id: fourth_inventory.id, food_id: fourth_food.id)
 
-first_recipe = Recipe.create(name: "First Recipe", preparation_time:10, cooking_time:20, description: "First thing to do", public:true, user_id:first_user.id)
-second_recipe = Recipe.create(name: "Second Recipe", preparation_time:20, cooking_time:50, description: "This is how make this dish", public:false, user:first_user.id)
-third_recipe = Recipe.create(name: "Third Recipe", preparation_time:30, cooking_time:10, description: "First thing to do", public:true, user_id:first_user.id)
-fourth_recipe = Recipe.create(name: "fourth Recipe", preparation_time:5, cooking_time:20, description: "First thing to do", public:false, user_id:first_user.id)
+first_recipe = Recipe.create(name: "First Recipe", preparation_time:10, cooking_time:20, description: "First thing to do", public:true, user:first_user)
+second_recipe = Recipe.create(name: "Second Recipe", preparation_time:20, cooking_time:50, description: "This is how make this dish", public:false, user:first_user)
+third_recipe = Recipe.create(name: "Third Recipe", preparation_time:30, cooking_time:10, description: "First thing to do", public:true, user: first_user)
+fourth_recipe = Recipe.create(name: "fourth Recipe", preparation_time:5, cooking_time:20, description: "First thing to do", public:false, user:first_user)
 
 RecipeFood.create(quantity:10, recipe_id:first_recipe.id, food_id:first_food.id)
 RecipeFood.create(quantity:30, recipe_id:first_recipe.id, food_id:second_food.id)
