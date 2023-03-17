@@ -32,11 +32,10 @@ Rails.application.routes.draw do
   
   resources :shopping_list, only: [:index]
 
+  resources :users
+
 
 #  resources :recipe_foods, only: [:edit, :update, :destroy]
-
-  resources :recipe_foods
-
   
   # Routes for Is
   # resources :users

@@ -34,7 +34,7 @@
 
 <table class="table table-sm table-striped table-bordered border-dark ">
 <tr>
-  <th> Food Item </th>
+  <th> Recipe Food Item </th>
   <th> Quantity </th>
   <th> Price </th>
   <th> Actions </th>
@@ -48,8 +48,7 @@
 
     <td>
     <div class="show-actions">
-    <%= button_to "Remove", recipe_food, method: :delete %>
-    <%= button_to "Modify", recipe_food, method: :edit %>
+    <%= button_to "Remove", recipe_recipe_food_path(recipe_food.recipe_id, recipe_food.id), method: :delete %>
     
     </div>
     </td>
@@ -58,7 +57,6 @@
   <% end %>
 </div>
 </table>
-
 
 
 
