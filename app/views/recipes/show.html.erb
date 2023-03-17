@@ -1,36 +1,70 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @recipe %>
+
+
+<div class="back-to-recipes-page">
+  <%= link_to "< Back to Recipes Page", recipes_path %>
+</div>
+
+<div class="recipe-details-container">
+<div class="recipe-times">
 <div class="preparation-time"><h3>Preparation Time: </h3><%=(@recipe.preparation_time/60).floor(4) %> hour </div>
 <div class="cooking-time"><h3>Cooking Time: </h3><%=(@recipe.cooking_time/60).floor(4) %> hour </div>
+</div>
+
 
 <%= button_to(@recipe.public? ? "Make Private" : "Make Public", toggle_recipe_privacy_path(@recipe), method: :put, class: "update-recipe") %>
 
+</div>
+
+<div class="function-buttons">
+<button class="generate-shopping-list">
+<%= link_to "Generate Shopping List" %> 
+</button>
+
+<button class="add-ingredient">
+<%= link_to "+ Add ingredient", new_recipe_recipe_food_path(@recipe) %> 
+</button>
+
+</div>
+
+<%= render @recipe %>
+<div class="edit-this-recipe"><%= link_to "Edit Recipe", edit_recipe_path(@recipe) %> </div>
 </br>
 
-<button>
-<%= link_to "Add ingredient", new_recipe_recipe_food_path(@recipe) %> 
-</button>
+<table class="table table-sm table-striped table-bordered border-dark ">
+<tr>
+  <th> Food Item </th>
+  <th> Quantity </th>
+  <th> Price </th>
+  <th> Actions </th>
+</tr>
+<div id="recipe_foods">
+  <% @recipe_foods.each_with_index do |recipe_food, index| %>
+    <tr>
+    <td>   <%= recipe_food.food.name %></td>
+    <td>    <%= recipe_food.quantity %></td>
+    <td><%= @foods[index].value %></td>
+
+    <td>
+    <div class="show-actions">
+    <%= button_to "Remove", recipe_food, method: :delete %>
+    <%= button_to "Modify", recipe_food, method: :edit %>
+    
+    </div>
+    </td>
+
+    </tr>
+  <% end %>
+</div>
+</table>
+
+
+
+
 <div>
 
 </br>
-
-<div id="recipe_foods">
-  <% @recipe_foods.each_with_index do |recipe_food, index| %>
-    <%= render recipe_food %>
-    <%= recipe_food.food.name %>
-    <%= recipe_food.quantity %>
-    <%= @foods[index].value %>
-    <%= button_to "Remove", recipe_food, method: :delete %>
-    <%= button_to "Modify", recipe_food, method: :edit %>
-
-  <% end %>
-</div>
 
  </div>
 
-
-<div>
-  <%= link_to "Edit this recipe", edit_recipe_path(@recipe) %> |
-  <%= link_to "Back to recipes", recipes_path %>
-</div>
