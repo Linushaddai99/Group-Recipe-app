@@ -2,12 +2,12 @@
   <h1 class="text-center">Shopping List </h1>
   <div class="d-flex justify-content-between mb-3">
     <div>
-      <p>Amount of items to buy: <%= @foods.size %></p>
+      <p>Amount of items to buy: <%= @final_food.size %></p>
       <p>Total value of food needed: <%= "$#{@sum}" %></p>
     </div>
     <div>
-      <p>Recipe: </p>
-      <p>Inventory: </p>
+      <p>Recipe: <span class="secondary"><%= Recipe.find(params[:recipe_id]).name%></span></p>
+      <p>Inventory: <span class="secondary"><%=  Inventory.find(params[:inventory_id]).name%></span></p>
     </div>
   </div>
 
@@ -18,7 +18,7 @@
       <th> Price </th>
       <th> Total </th>
     </tr>
-    <% @foods.each do |food_item| %>
+    <%  @final_food.each do |food_item| %>
         <tr>
           <td><%= food_item.food.name %></td>
           <td><%= food_item.quantity %></td>

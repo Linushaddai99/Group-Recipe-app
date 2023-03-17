@@ -1,6 +1,6 @@
 <div class="wrapper">
 
-  <h1>Public Recipe List</h1>
+  <h1>Public Recipes</h1>
   <% @public_recipes.each do |recipe| %>
     <%= render partial: 'public_recipes/public_recipe_card', locals: { recipe: recipe, user_id: recipe.id } %>
   <% end %>
