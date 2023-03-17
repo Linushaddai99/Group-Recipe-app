@@ -2,7 +2,6 @@ class RecipesController < ApplicationController
   before_action :set_recipe, only: %i[edit update destroy]
   before_action :authenticate_user!
 
-
   # GET /recipes or /recipes.json
   def index
     @recipes = current_user.recipes.includes(:recipe_foods).all.order('id DESC')
