@@ -20,6 +20,7 @@ class InventoriesController < ApplicationController
   # GET /inventories/1 or /inventories/1.json
   def show
     return unless current_user
+
     @foods = Food.all
     @meals = InventoryFood.where(inventory_id: params[:id])
     # @inventory_food = InventoryFood.where(inventory_id: params[:inventory_id], id: params[:id])

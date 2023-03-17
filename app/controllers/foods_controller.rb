@@ -8,7 +8,7 @@ class FoodsController < ApplicationController
   end
 
   # GET /foods/1 or /foods/1.json
- 
+
 
   # GET /foods/new
   def new
@@ -32,7 +32,6 @@ class FoodsController < ApplicationController
       render :new, alert: 'Food was not created.'
     end
   end
-
 
   # DELETE /foods/1 or /foods/1.json
   def destroy
