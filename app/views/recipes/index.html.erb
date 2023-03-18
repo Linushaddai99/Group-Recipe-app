@@ -1,0 +1,19 @@
+<p style="color: green"><%= notice %></p>
+
+
+
+<div class="recipes-holder">
+
+  <div class="new-recipe">
+  <%= button_to "+ Add New Recipe", new_recipe_path, method: :get %>
+  </div>
+
+  <div class="recipes">
+  <h1>Recipes List</h1>
+
+  <% @recipes.each do |recipe| %>
+    <%= render recipe %>
+  <% end %>
+  </div>
+</div>
+

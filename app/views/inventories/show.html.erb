@@ -1,0 +1,46 @@
+<div class="page" >
+  <p style="color: green"><%= notice %></p>
+
+  <h2><%= @inventory.name %></h2>
+
+  
+  <% if @foods %>
+    <%= form_with(model: @inventory_food, url: inventory_inventory_foods_path(@inventory.id), method: :post) do |form| %>
+      <div class="add-inventory-food">
+        <p>Add food</p>
+        <div>
+          <%= form.select :food_id, @foods.map { |food| [food.name, food.id] }, class: 'select-field' %>
+        </div>
+
+        <div class="field flex">
+          <%= form.label :quantity %><br />
+          <%= form.number_field :quantity, autofocus: true, autocomplete: "quantity" %>
+        </div>
+        <%= form.submit %>
+        </div>
+      <% end %>
+    <% end %>
+
+    <% if @meals %>
+    <div class="inventory-food-table">
+        <table>
+        <tr>
+        <th>Food</th>
+        <th>Quantity</th>
+        <th>Actions</th>
+      </tr>
+        <% @meals.each do |food| %>
+        <tr>
+        <% f = @foods.find { |f| f.id == food.food_id } %>
+          <td><%= f.name %></td>
+          <td><%= food.quantity %></td>
+          <td><%= button_to "Destroy this inventory food", inventory_inventory_food_path(food.inventory_id, food.id), method: :delete %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+<% end %>
+
+
+  <%= link_to "Back to inventories", inventories_path %>
+</div>

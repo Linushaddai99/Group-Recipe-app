@@ -1,0 +1,13 @@
+<p style="color: green"><%= notice %></p>
+ <h1 class="text-center">Foods</h1>
+<div class="d-flex justify-content-center">
+  <div id="foods">
+    <% @foods.each do |food| %>
+      <%= render food %>
+      <p>
+        <%= link_to "Show this food", food %>
+      </p>
+    <% end %>
+  </div>
+  <p><%= link_to "New food", new_food_path %></p>
+</div>
