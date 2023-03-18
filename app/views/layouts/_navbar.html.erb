@@ -11,7 +11,6 @@
         <% if user_signed_in? %>
           <%= link_to "Recipes", user_recipes_path(user_id: current_user.id), :class => 'nav-link' %>
           <%= link_to "Inventories", user_inventories_path(user_id: current_user.id), :class => 'nav-link' %>
-          <%= link_to "Foods", foods_path(user_id: current_user.id), :class => 'nav-link' %>
           <%= link_to 'Edit profile', edit_user_registration_path, :class => 'nav-link' %>
           <%= button_to "Logout", destroy_user_session_path, method: :delete, data: { turbo: false }, :class => 'nav-link' %>
         <% else %>
