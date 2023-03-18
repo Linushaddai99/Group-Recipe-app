@@ -18,7 +18,6 @@ class InventoriesController < ApplicationController
 
     @foods = Food.all
     @meals = InventoryFood.where(inventory_id: params[:id])
-    # @inventory_food = InventoryFood.where(inventory_id: params[:inventory_id], id: params[:id])
   end
 
   # GET /inventories/new
@@ -80,5 +79,3 @@ class InventoriesController < ApplicationController
     params.require(:inventory).permit(:name, :description).merge(user: current_user)
   end
 end
-
-# params.require(:inventory).permit(:name, :description).merge(user: current_user)
