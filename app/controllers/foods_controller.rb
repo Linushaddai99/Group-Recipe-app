@@ -3,8 +3,9 @@ class FoodsController < ApplicationController
 
   # GET /foods or /foods.json
   def index
-    @user = current_user
-    @foods = Food.where(user_id: @user.id)
+    # @user = current_user
+    # @foods = Food.where(user_id: @user.id)
+    @foods = Food.all
   end
 
   def new
