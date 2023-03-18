@@ -2,13 +2,13 @@
 
 
 
-<div id="recipes-holder">
+<div class="recipes-holder">
 
   <div class="new-recipe">
   <%= button_to "+ Add New Recipe", new_recipe_path, method: :get %>
   </div>
 
-  <div id="recipes">
+  <div class="recipes">
   <h1>Recipes List</h1>
 
   <% @recipes.each do |recipe| %>

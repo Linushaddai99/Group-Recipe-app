@@ -1,4 +1,4 @@
-#recipes-holder {
+.recipes-holder {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -7,7 +7,7 @@
   height: 100%;
 }
 
-#recipes {
+.recipes {
   display: flex;
   align-items: center;
   justify-content: center;
