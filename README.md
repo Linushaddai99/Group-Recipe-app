@@ -88,33 +88,18 @@ Run the following command to install all project's dependencies:
   cd recipe-app
   bundle install
   node install
-```
 
-### Usage
+  ### Running the app
 
-To run the project, execute the following command:
-
-Example command:
-
-```sh
-  rails server
-```
-
-OR
-
-```sh
-  rails s
-```
+  rails db:create:all 
+  rails db:migrate
+  rails db:seed ### to populate the database with some sample data.
+  rails s ## to start the server.
+  http://localhost:3000 ## app link in the browser
 
 ### Run tests
-
-To run tests, run the following commands:
-
-Example command:
-
-```
   bundle install
-  rspec spec
+  rspec
 ```
 
 ## 👥 Authors <a name="authors"></a>
