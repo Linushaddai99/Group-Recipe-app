@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     resources :inventory_foods, only: [:new, :create, :destroy]
   end
 
-  resources :foods, only: [:new, :create, :destroy]
+  resources :foods, only: [:new, :index, :show, :create, :destroy]
 
   #resources :recipes, only: [:new, :create, :edit, :index, :show, :destroy] do
     
@@ -32,7 +32,6 @@ Rails.application.routes.draw do
   end
   
   resources :shopping_list, only: [:index]
-  resources :foods, only: [:new, :create, :edit, :update, :destroy]
 
   resources :users do
     resources :recipes, only: [:index, :show, :new, :create, :edit, :update, :destroy] 
