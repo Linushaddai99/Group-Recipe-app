@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   # Routes for public recepes
   get '/public_recipes', to: 'public_recipes#index'
   # Routes for shopping list
-  get '/shopping_list', to: 'shopping_list#index'
+  get '/shopping_list', to: 'shopping_lists#index'
 
   put '/recipes/:id/toggle_privacy', to: 'recipes#toggle_privacy', as: 'toggle_recipe_privacy'
   
