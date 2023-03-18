@@ -4,14 +4,14 @@ class RecipesController < ApplicationController
 
   # GET /recipes or /recipes.json
   def index
-    @recipes = current_user.recipes.includes(:recipe_foods).all.order('id DESC')
+    @recipes = current_user.recipes.all.order('id DESC')
   end
 
   # GET /recipes/1 or /recipes/1.json
   def show
     @recipe = Recipe.find(params[:id])
     # @foods = RecipeFood.where(recipe_id: @recipe.id)
-    @recipe_foods = @recipe.recipe_foods
+    @recipe_foods = @recipe.recipe_foods.includes([:food])
 
     @foods = RecipeFood.joins(:food).select('foods.id as food_id,
     name as food_name, quantity, price, quantity * price as value, recipe_id').where(recipe_id: params[:id])

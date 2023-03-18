@@ -27,18 +27,6 @@ class InventoryFoodsController < ApplicationController
     else
       render :new, alert: 'Food was not created.'
     end
-
-    # respond_to do |format|
-    #   if @inventory_food.save
-    #     format.html do
-    #       redirect_to inventory_food_url(@inventory_food), notice: 'Inventory food was successfully created.'
-    #     end
-    #     format.json { render :show, status: :created, location: @inventory_food }
-    #   else
-    #     format.html { render :new, status: :unprocessable_entity }
-    #     format.json { render json: @inventory_food.errors, status: :unprocessable_entity }
-    #   end
-    # end
   end
 
   # PATCH/PUT /inventory_foods/1 or /inventory_foods/1.json
@@ -65,16 +53,6 @@ class InventoryFoodsController < ApplicationController
   end
 
   private
-
-  # Use callbacks to share common setup or constraints between actions.
-  # def set_inventory_food
-  #   @inventory_food = InventoryFood.find(params[:id])
-  # end
-
-  # Only allow a list of trusted parameters through.
-  # def inventory_food_params
-  #  params.fetch(:inventory_food, {})
-  # end
 
   def inventory_food_params
     params.require(:inventory_food).permit(food_id: params[:food_id], quantity: params[:quantity])

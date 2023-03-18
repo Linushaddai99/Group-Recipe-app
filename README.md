@@ -70,10 +70,14 @@ After installing Ruby, run the following command to install rails.-
 
 ### Setup
 
-Clone this project on your local machine using the following command in your terminal:
+- Clone this project on your local machine using the following command in your terminal:
+
+- Make sure to add .env file on your root directory and setup your .env file with your postgres username and password!
 
 ```sh
   git clone https://github.com/Linushaddai99/Group-Recipe-app.git
+  bundle install
+  rails s
 ```
 
 ### Install
@@ -102,16 +106,16 @@ OR
   rails s
 ```
 
-<!-- ### Run tests
+### Run tests
 
-To run tests, run the following command:
+To run tests, run the following commands:
 
 Example command:
 
-```sh
-  gem install rails rspec
-  rails spec spec/models/
-``` -->
+```
+  bundle install
+  rspec spec
+```
 
 ## 👥 Authors <a name="authors"></a>
 
@@ -161,3 +165,4 @@ If you like this project, kindly give it a star ⭐️
 This project is [MIT](./LICENSE) licensed.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+````
