@@ -1,16 +1,29 @@
 <div class='nav-bar'>
 
-<div class="flex">
+
     <% if user_signed_in? %>
         <div>
             <p><%= current_user.name%> </p>
         </div>
     <% end %>
 
+    
+    <div>
+        <%= link_to "Inventories", inventories_path %>
+    </div>
+
     <div>
         <%= link_to "Add food", new_food_path %>
     </div>
-</div>
+
+    <div>
+        <%= link_to "Recipes", recipes_path %>
+    </div>
+
+    <div>
+        <%= link_to "Shopping List", shopping_list_path %>
+    </div>
+
    
 
         <% if user_signed_in? %>

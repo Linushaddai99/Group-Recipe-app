@@ -10,13 +10,14 @@
   margin-bottom: 20px;
 }
 
+
 .inventory-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.inventories-page h1 {
+ h1 {
   margin-bottom: 20px;
 }
 
@@ -50,4 +51,19 @@ table th {
   border: 1px solid black;
   text-align: left;
   padding: 5px;
+}
+
+.inventory-view-delete {
+    display: flex;
+}
+
+.add-inventory-food p {
+    margin-right: 10px;
+}
+
+
+.food-field {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 5px;
 }

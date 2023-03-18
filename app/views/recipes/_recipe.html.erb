@@ -1,12 +1,12 @@
-<div class="each-recipe" id="<%= dom_id recipe %>">
-    <h2><%= recipe.name %> </h2>
-    <p><%= recipe.description %> </p>
-
-
-
-    <div class="each-recipe-buttons">
-    <div class="show-this-recipe"><%= button_to "Show", recipe, method: :get %></div>
-    <div class="delete-this-recipe"><%= button_to "Delete", recipe, method: :delete %></div>
+<div class="recipe-container" id="<%= dom_id recipe %>">
+    <div class="recipe-name-descrip">
+        <h2><%= recipe.name %> </h2>
+        <p><%= recipe.description %> </p>
+    </div>
+    
+    <div class="recipe-show-delete">
+        <div><%= button_to "View Recipe", recipe, method: :get %></div>
+        <div><%= button_to "Delete Recipe", recipe, method: :delete %></div>
     </div>
 
 </div>

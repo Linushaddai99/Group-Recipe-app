@@ -6,9 +6,14 @@
     <% @inventories.each do |inventory| %>
       <div class="inventories">
         <%= render inventory %>
+        <div class="inventory-view-delete">
         <p>
-          <%= link_to "View this inventory", inventory %>
+          <%= link_to "View Inventory", inventory %>
         </p>
+        <p>
+          <%= button_to "Delete Inventory", inventory_path(inventory.id), method: :delete %>
+        </p>
+        </div>
       </div>
     <% end %>
 

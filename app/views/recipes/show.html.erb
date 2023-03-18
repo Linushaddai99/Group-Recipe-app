@@ -1,38 +1,34 @@
+<div class="page">
 <p style="color: green"><%= notice %></p>
 
-
-
-<div class="back-to-recipes-page">
-  <%= link_to "< Back to Recipes Page", recipes_path %>
-</div>
+<h2><%= @recipe.name %></h2>
 
 <div class="recipe-details-container">
-<div class="recipe-times">
-<div class="preparation-time"><h3>Preparation Time: </h3><%=(@recipe.preparation_time/60).floor(4) %> hour </div>
-<div class="cooking-time"><h3>Cooking Time: </h3><%=(@recipe.cooking_time/60).floor(4) %> hour </div>
-</div>
-
-
-<%= button_to(@recipe.public? ? "Make Private" : "Make Public", toggle_recipe_privacy_path(@recipe), method: :put, class: "update-recipe") %>
-
+  <div class="recipe-times">
+    <div class="preparation-time">
+      <h3>Preparation Time: </h3><%=(@recipe.preparation_time/60).floor(4) %> hour 
+    </div>
+    <div class="cooking-time">
+      <h3>Cooking Time: </h3><%=(@recipe.cooking_time/60).floor(4) %> hour 
+    </div>
+  </div>
+  <div>
+    <%= button_to(@recipe.public? ? "Make Private" : "Make Public", toggle_recipe_privacy_path(@recipe), method: :put, class: "update-recipe") %>
+  </div>
 </div>
 
 <div class="function-buttons">
-<button class="generate-shopping-list">
-<%= link_to "Generate Shopping List" %> 
-</button>
+  <button class="generate-shopping-list">
+    <%= link_to "Generate Shopping List" %> 
+  </button>
 
-<button class="add-ingredient">
-<%= link_to "+ Add ingredient", new_recipe_recipe_food_path(@recipe) %> 
-</button>
+  <button class="add-ingredient">
+    <%= link_to "+ Add ingredient", new_recipe_recipe_food_path(@recipe) %> 
+  </button>
 
 </div>
 
-<%= render @recipe %>
-<div class="edit-this-recipe"><%= link_to "Edit Recipe", edit_recipe_path(@recipe) %> </div>
-</br>
-
-<table class="table table-sm table-striped table-bordered border-dark ">
+<table class="table table-sm table-striped table-bordered border-dark recipe-table">
 <tr>
   <th> Recipe Food Item </th>
   <th> Quantity </th>
@@ -66,3 +62,5 @@
 
  </div>
 
+
+</div>

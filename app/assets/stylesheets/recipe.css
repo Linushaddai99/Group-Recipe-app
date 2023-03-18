@@ -1,0 +1,38 @@
+.recipe-container {
+    border: 1px solid black;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.recipe-name-descrip {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.recipe-show-delete {
+    display: flex;
+}
+
+.recipe-times div {
+    margin-bottom: 20px;
+}
+
+.recipe-details-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.function-buttons  button{
+    display: block
+}
+
+.function-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.recipe-table {
+    width: 100%;
+}

@@ -1,19 +1,13 @@
-<p style="color: green"><%= notice %></p>
+<div class="page">
+  <p style="color: green"><%= notice %></p>
+      <h1>Recipes List</h1>
 
+      <% @recipes.each do |recipe| %>
+        <%= render recipe %>
+      <% end %>
 
+      <div>
+        <%= link_to "Add Recipe", new_recipe_path, method: :get %>
+      </div>
 
-<div id="recipes-holder">
-
-  <div class="new-recipe">
-  <%= button_to "+ Add New Recipe", new_recipe_path, method: :get %>
-  </div>
-
-  <div id="recipes">
-  <h1>Recipes List</h1>
-
-  <% @recipes.each do |recipe| %>
-    <%= render recipe %>
-  <% end %>
-  </div>
 </div>
-
