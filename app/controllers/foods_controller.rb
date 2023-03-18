@@ -3,8 +3,9 @@ class FoodsController < ApplicationController
 
   # GET /foods or /foods.json
   def index
-    @user = current_user
-    @foods = Food.where(user_id: @user.id)
+    # @user = current_user
+    # @foods = Food.where(user_id: @user.id)
+    @foods = Food.all
   end
 
   def new
@@ -40,12 +41,6 @@ class FoodsController < ApplicationController
   end
 
   private
-
-  # Use callbacks to share common setup or constraints between actions.
-  # def set_food
-  #   @user = current_user
-  #   @food = Food.find(params[:id])
-  # end
 
   # Only allow a list of trusted parameters through.
   def food_params
