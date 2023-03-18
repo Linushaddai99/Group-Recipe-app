@@ -8,11 +8,10 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <%= link_to "Public Recipes", public_recipes_path, :class => 'nav-link' %>
         <%= link_to "Shopping list", shopping_list_path, :class => 'nav-link' %>
-        <%= link_to "Users", users_path, :class => 'nav-link' %>
         <% if user_signed_in? %>
           <%= link_to "Recipes", user_recipes_path(user_id: current_user.id), :class => 'nav-link' %>
-          <%= link_to "inventories", user_inventories_path(user_id: current_user.id), :class => 'nav-link' %>
-          <%= link_to "Food List", foods_path(user_id: current_user.id), :class => 'nav-link' %>
+          <%= link_to "Inventories", user_inventories_path(user_id: current_user.id), :class => 'nav-link' %>
+          <%= link_to "Foods", foods_path(user_id: current_user.id), :class => 'nav-link' %>
           <%= link_to 'Edit profile', edit_user_registration_path, :class => 'nav-link' %>
           <%= button_to "Logout", destroy_user_session_path, method: :delete, data: { turbo: false }, :class => 'nav-link' %>
         <% else %>
