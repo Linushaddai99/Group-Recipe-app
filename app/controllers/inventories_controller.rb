@@ -4,17 +4,12 @@ class InventoriesController < ApplicationController
 
   # GET /inventories or /inventories.json
   def index
-    # @inventories = Inventory.all
-
     return unless current_user
 
     return unless current_user.present?
 
-    # @inventories = Inventory.includes([:user]).where(user: current_user).order(created_at: :desc)
     @inventories = Inventory.where(user: current_user).all
 
-    # @inventories = Inventory.includes(:user).find(params[:user_id])
-    # @posts = Post.where(author_id: params[:user_id])
   end
 
   # GET /inventories/1 or /inventories/1.json
