@@ -9,7 +9,6 @@ class InventoriesController < ApplicationController
     return unless current_user.present?
 
     @inventories = Inventory.where(user: current_user).all
-
   end
 
   # GET /inventories/1 or /inventories/1.json
