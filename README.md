@@ -102,16 +102,16 @@ OR
   rails s
 ```
 
-<!-- ### Run tests
+### Run tests
 
-To run tests, run the following command:
+To run tests, run the following commands:
 
 Example command:
 
-```sh
-  gem install rails rspec
-  rails spec spec/models/
-``` -->
+```
+  bundle install
+  rspec spec
+```
 
 ## 👥 Authors <a name="authors"></a>
 
@@ -161,3 +161,4 @@ If you like this project, kindly give it a star ⭐️
 This project is [MIT](./LICENSE) licensed.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+````
